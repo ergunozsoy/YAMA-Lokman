@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YAMA Lokman</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="badge">YAMA Sağlık Yoldaşı</div>
+    <h1>YAMA Lokman</h1>
+    <p class="subtitle">Sağlık Bilgisi ve Anamnez Yoldaşı</p>
+    <p class="motto">Bedenini tanı. Bilgini artır. Gerektiğinde hekime danış.</p>
+  </header>
+
+  <section class="notice">
+    <strong>Güvenlik sınırı:</strong>
+    Bu uygulama teşhis koymaz, tedavi veya ilaç tavsiyesi vermez. Bilgi verir ve gerektiğinde hekime başvurmayı önerir.
+  </section>
+
+  <main class="container">
+
+    <section class="grid">
+      <button class="card" onclick="showSection('anamnez')">
+        <h2>Sağlık Öyküm / Anamnez</h2>
+        <p>Şikâyetinizi, zaman çizelgenizi ve doktora sunulacak öyküyü hazırlayın.</p>
+      </button>
+
+      <button class="card" onclick="showSection('atlas')">
+        <h2>Beden Atlası</h2>
+        <p>Kalp, böbrek, karaciğer, sinir sistemi ve diğer beden sistemlerini tanıyın.</p>
+      </button>
+
+      <button class="card" onclick="showSection('tahlil')">
+        <h2>Tahlil Değerlerini Anla</h2>
+        <p>Sodyum, potasyum, CRP, hemoglobin ve diğer değerlerin genel anlamını öğrenin.</p>
+      </button>
+
+      <button class="card" onclick="showSection('belirti')">
+        <h2>Belirtiyi Anla</h2>
+        <p>Baş dönmesi, çarpıntı, nefes darlığı gibi belirtileri bilgi düzeyinde değerlendirin.</p>
+      </button>
+
+      <button class="card" onclick="showSection('doktor')">
+        <h2>Doktora Hazırlan</h2>
+        <p>Doktor görüşmesi için notlarınızı ve sorularınızı düzenleyin.</p>
+      </button>
+
+      <button class="card" onclick="showSection('acil')">
+        <h2>Acil Uyarı İşaretleri</h2>
+        <p>Hangi belirtilerde acil yardım alınması gerektiğini hatırlayın.</p>
+      </button>
+
+      <button class="card" onclick="showSection('yanlis')">
+        <h2>Yanlış Bilinenler</h2>
+        <p>Sağlıkla ilgili yaygın yanlış inanışları düzeltin.</p>
+      </button>
+
+      <button class="card" onclick="showSection('notlar')">
+        <h2>Sağlık Notlarım</h2>
+        <p>Tansiyon, nabız, ateş, ilaç ve belirti notlarınızı düzenleyin.</p>
+      </button>
+    </section>
+
+    <section id="anamnez" class="content-section hidden">
+      <h2>Sağlık Öyküm / Anamnez</h2>
+      <p class="section-intro">Bu bölüm, sağlık öykünüzü düzenli biçimde hazırlamanıza yardımcı olur. Teşhis koymaz.</p>
+
+      <label>Ana şikâyetiniz nedir?</label>
+      <textarea id="mainComplaint" placeholder="Örn. Son iki gündür halsizlik ve nefes darlığı..."></textarea>
+
+      <label>Ne zaman başladı?</label>
+      <input id="startTime" type="text" placeholder="Örn. 08.06.2026 sabahı" />
+
+      <label>Şikâyet nasıl gelişti?</label>
+      <textarea id="development" placeholder="Örn. Önce halsizlik başladı, sonra nefes darlığı eklendi..."></textarea>
+
+      <label>Eşlik eden belirtiler</label>
+      <textarea id="symptoms" placeholder="Örn. Ateş, çarpıntı, baş dönmesi, bacaklarda şişlik..."></textarea>
+
+      <label>Bilinen hastalıklar</label>
+      <textarea id="conditions" placeholder="Örn. Hipertansiyon, diyabet, kalp hastalığı..."></textarea>
+
+      <label>Kullanılan ilaçlar ve takviyeler</label>
+      <textarea id="medications" placeholder="Örn. Tansiyon ilacı, kan sulandırıcı, vitaminler..."></textarea>
+
+      <label>Son olaylar</label>
+      <textarea id="recentEvents" placeholder="Örn. Yolculuk, enfeksiyon, düşme, susuz kalma, ilaç değişikliği..."></textarea>
+
+      <button class="primary-btn" onclick="generateSummary()">Sağlık Öyküsü Oluştur</button>
+
+      <div id="summaryBox" class="summary hidden">
+        <h3>Doktora Sunulacak Sağlık Öyküsü</h3>
+        <pre id="summaryText"></pre>
+        <button class="secondary-btn" onclick="copySummary()">Metni Kopyala</button>
+      </div>
+    </section>
+
+    <section id="atlas" class="content-section hidden">
+      <h2>Beden Atlası</h2>
+      <ul>
+        <li><strong>Kalp ve damar sistemi:</strong> Kan dolaşımı, tansiyon ve oksijen taşınmasıyla ilişkilidir.</li>
+        <li><strong>Böbrekler:</strong> Sıvı, tuz dengesi ve atık maddelerin uzaklaştırılmasında önemlidir.</li>
+        <li><strong>Karaciğer:</strong> Metabolizma, ilaç işleme, safra ve pıhtılaşma süreçleriyle ilişkilidir.</li>
+        <li><strong>Sinir sistemi:</strong> Hareket, his, bilinç, denge ve refleksleri yönetir.</li>
+      </ul>
+    </section>
+
+    <section id="tahlil" class="content-section hidden">
+      <h2>Tahlil Değerlerini Anla</h2>
+      <p>Bu bölüm tahlil değerlerinin genel anlamını açıklar. Tek bir değerle teşhis konulamaz.</p>
+      <ul>
+        <li><strong>Sodyum:</strong> Su dengesi ve sinir sistemiyle ilişkilidir.</li>
+        <li><strong>Potasyum:</strong> Kalp ritmi, kas ve sinir iletiminde önemlidir.</li>
+        <li><strong>CRP:</strong> Vücutta iltihap veya enfeksiyon durumlarında yükselebilen bir göstergedir.</li>
+        <li><strong>Hemoglobin:</strong> Kanda oksijen taşınmasıyla ilişkilidir.</li>
+      </ul>
+    </section>
+
+    <section id="belirti" class="content-section hidden">
+      <h2>Belirtiyi Anla</h2>
+      <p>Belirtiler tek başına kesin anlam taşımaz. Zaman, bağlam, eşlik eden bulgular ve tıbbi değerlendirme önemlidir.</p>
+    </section>
+
+    <section id="doktor" class="content-section hidden">
+      <h2>Doktora Hazırlan</h2>
+      <ul>
+        <li>Şikâyetim ne?</li>
+        <li>Ne zaman başladı?</li>
+        <li>Hangi belirtiler eşlik ediyor?</li>
+        <li>Hangi ilaçları kullanıyorum?</li>
+        <li>Doktora hangi soruları sormalıyım?</li>
+      </ul>
+    </section>
+
+    <section id="acil" class="content-section hidden">
+      <h2>Acil Uyarı İşaretleri</h2>
+      <p>Şiddetli göğüs ağrısı, nefes darlığı, bilinç bulanıklığı, felç belirtileri, kontrol edilemeyen kanama veya nöbet gibi durumlarda acil sağlık hizmetlerine başvurulmalıdır.</p>
+    </section>
+
+    <section id="yanlis" class="content-section hidden">
+      <h2>Yanlış Bilinenler</h2>
+      <ul>
+        <li>Tek bir tahlil değeri her şeyi göstermez.</li>
+        <li>Bitkisel olan her şey zararsız değildir.</li>
+        <li>Vitamin fazla alınınca her zaman daha iyi olmaz.</li>
+        <li>İlaç iyi gelince doktor bilgisi olmadan bırakılmamalıdır.</li>
+      </ul>
+    </section>
+
+    <section id="notlar" class="content-section hidden">
+      <h2>Sağlık Notlarım</h2>
+      <p>Bu bölüm ileride tansiyon, nabız, ateş, kilo, kan şekeri ve doktor görüşmesi notları için geliştirilecektir.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>YAMA Lokman – Bilgi verir, teşhis koymaz.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
