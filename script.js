@@ -26,6 +26,9 @@ function generateSummary() {
   const conditions = getValue("conditions");
   const medications = getValue("medications");
   const recentEvents = getValue("recentEvents");
+  const timeline = getValue("timeline");
+  const relativeObservation = getValue("relativeObservation");
+  const doctorQuestions = getValue("doctorQuestions");
 
   const summary = `DOKTORA SUNULACAK SAĞLIK ÖYKÜSÜ
 
@@ -50,6 +53,15 @@ ${medications}
 Son olaylar:
 ${recentEvents}
 
+Zaman çizelgesi:
+${timeline}
+
+Hasta yakını gözlemi:
+${relativeObservation}
+
+Doktora sorulacak sorular:
+${doctorQuestions}
+
 Güvenlik notu:
 Bu metin kullanıcı tarafından girilen bilgileri düzenlemek için oluşturulmuştur. Teşhis, tedavi veya ilaç önerisi değildir. Acil veya ciddi belirtilerde hekime ya da acil sağlık hizmetlerine başvurulmalıdır.`;
 
@@ -73,4 +85,37 @@ function copySummary() {
     .catch(() => {
       alert("Metin kopyalanamadı. Lütfen elle seçip kopyalayın.");
     });
+}
+
+function clearForm() {
+  const fields = [
+    "mainComplaint",
+    "startTime",
+    "development",
+    "symptoms",
+    "conditions",
+    "medications",
+    "recentEvents",
+    "timeline",
+    "relativeObservation",
+    "doctorQuestions"
+  ];
+
+  fields.forEach((id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.value = "";
+    }
+  });
+
+  const summaryBox = document.getElementById("summaryBox");
+  const summaryText = document.getElementById("summaryText");
+
+  if (summaryBox) {
+    summaryBox.classList.add("hidden");
+  }
+
+  if (summaryText) {
+    summaryText.textContent = "";
+  }
 }
